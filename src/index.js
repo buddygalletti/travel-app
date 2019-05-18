@@ -11,15 +11,6 @@ const map = new mapboxgl.Map({
   style: 'mapbox://styles/mapbox/streets-v10' // mapbox has lots of different map styles available.
 });
 
-// const marker = document.createElement('div');
-// marker.style.width = '32px';
-// marker.style.height = '39px';
-// marker.style.backgroundImage = 'url(http://i.imgur.com/WbMOfMl.png)';
-
-
-// const newMarker = markerMaker('restaurants', [-74.009151, 40.705086]);
-// newMarker.addTo(map);
-
 async function addOptions(category) {
     try {
         const places = await goFetch(category);

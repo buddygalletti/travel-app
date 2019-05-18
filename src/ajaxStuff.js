@@ -10,6 +10,4 @@ async function goFetch(category, id='') {
 
 }
 
-// console.log(goFetch('hotels', 5));
-
 export default goFetch;
