@@ -1,8 +1,8 @@
-// console.log('Hello from JavaScript');
+import mapboxgl from 'mapbox-gl';
+import markerMaker from './marker';
+import goFetch from './ajaxStuff';
 
-import mapboxgl from 'mapbox-gl'
-
-mapboxgl.accessToken = 'YOUR API TOKEN HERE';
+mapboxgl.accessToken = 'pk.eyJ1IjoiYnVkZHlnYWxsZXR0aSIsImEiOiJjanZ0cnNiNTkwc2tuM3pvZ3VkMHJyNm82In0.7zcRJ9o1nNOBsjiJnpv3tQ';
 
 const map = new mapboxgl.Map({
   container: 'map',
@@ -10,3 +10,33 @@ const map = new mapboxgl.Map({
   zoom: 12, // starting zoom
   style: 'mapbox://styles/mapbox/streets-v10' // mapbox has lots of different map styles available.
 });
+
+// const marker = document.createElement('div');
+// marker.style.width = '32px';
+// marker.style.height = '39px';
+// marker.style.backgroundImage = 'url(http://i.imgur.com/WbMOfMl.png)';
+
+
+// const newMarker = markerMaker('restaurants', [-74.009151, 40.705086]);
+// newMarker.addTo(map);
+
+async function addOptions(category) {
+    try {
+        const places = await goFetch(category);
+        const select = document.getElementById(`${category}-choices`);
+        places.forEach(function(place){
+            const option = document.createElement('option');
+            option.setAttribute('id', `${category}-${place.id}`);
+            option.innerHTML = `${place.name}`
+            select.appendChild(option);
+        });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+addOptions('hotels');
+addOptions('activities');
+addOptions('restaurants');
+
+console.log(goFetch('hotels'));
