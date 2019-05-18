@@ -30,4 +30,14 @@ addOptions('hotels');
 addOptions('activities');
 addOptions('restaurants');
 
-console.log(goFetch('hotels'));
+
+
+
+
+const buttons = document.getElementsByTagName('button');
+
+
+// this is where we stopped. this isnt working
+buttons.addEventListener('click', function(event){
+    console.log("hello");
+})

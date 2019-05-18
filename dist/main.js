@@ -206,7 +206,17 @@ addOptions('hotels');
 addOptions('activities');
 addOptions('restaurants');
 
-console.log(Object(_ajaxStuff__WEBPACK_IMPORTED_MODULE_2__["default"])('hotels'));
+
+
+
+
+const buttons = document.getElementsByTagName('button');
+
+
+// this is where we stopped. this isnt working
+buttons.addEventListener('click', function(event){
+    console.log("hello");
+})
 
 /***/ }),
 
